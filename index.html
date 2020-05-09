@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURWFHOmpNPl5MQmNPR2JPTGdNSmVOSWpLRGxPT2dQQmNQTmZQSWhQSGpQS2tTS2pTTmtST21QS25ST21VSW1VS21UTW1XTm9XT2hVUG1TUG5XUGxZU21aUm9YVG9aVG5aVWpfWnFWTXJaSHVYTXVYT3ZaTHZcT3JVVXJXVnRWVnRXWHNZVnZZU3RbVnReUnRcVnJbWHBdWnVcWHZdWXddW3teU35eVnpfWHheW3pdXXdcYnteZHJjW3diW3hkV39gV3lhWXpjXX5gWH9kWX5lX3dkZXxkYn5qZIhLUIFWUYNbVI9cVoNiVoBlWoFmX4NpWoZpWYZoX4VrX4lkV4pmVo5rUYBkYoBlZIdnYoVkZ4NoYIJqZYVqYoZsYYVvZIpnYIpsYodyZpBtZpZubJF2bpd2a5d4ZZV6c5l6cZ99cKJoTcp8Ze9/Z+l/aJRzgJ+Fd5+Eep2Kf6GEbaGDcqCGebWMcrKTerCSfMOBZNSIa9eIb96Mbt6XduOHauSQbveLdPmLcJGEgJqJg6qMg7mFgryJhriNlbGRg7WSg7GWiLiXgMiPgcaek9Wfgc2gh8mhismjjsakksmnkcypmtCjjNGjjdSmiNKsh9Gqi9eqj9esj9+nhNGpltKsntmulNyslNeyjtixi9S2l969lNCyqdu4oOOoj+unhu6ph+WvkeG6nOS4n+a8mOu0nOm1num5n+u8nO+5nu69m+G1rOO7peC9oeC9o+C9pOe4oeW6oeW4pOa6pOe6pue9oOe8oee/pe22oOi6oOi6oei5pui8o+m+ouu9pOq+pOy4oOy4ouy5o+y8oOy+o+28pN/BrOPBmOLBn+XDmu3DnevJnuzInuzJn/TCneLBpOfIpevCouvApOrBperGp+3Foe3HoenEqerGqu/GqerJp+3Jou/Koe7Kou/Lo+/JpO7MoO/OrvbHp/DHqfDKoPDLofDNofHMovDMpfXJpPTMpfDJqPLPrPXMqPTOr/rPrfzMrPTQrAAAAAAAAAAAAAAAAAAAAAAAAIeGXbkAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEbSURBVChTARAB7/4ASIu/d1wqCCknOTtuhrPc2wCES1QlEgUMDhdAMDpZSo+9AIVjBxVWKCs4GTIzRldYU5wASREGQWdCaKQ/gzYsEB1OYgAkBgtSh5K2t1XXpWldA0c0AEQKN5Wfnpp1mNXP0OJyGkUALQRkuM3ExeHz1NPRo6IJMQAVGHDGr7na2d7m1eju2CIfABQbdMzLu8fd5OXj7e/pTx4AExxvmZaUjqzs8KCXoeBgDwAWLnO0wcrJsNLn9PnyqkwNACFNiLzIwr6y1vH39/W1AC8AI1Gdw8DIanl7fI3464oAWgAmQ5O6rqZrbWx9eOrfZjVlAD5hUJCrsXp/gH6b9nYBX4wAPCCBgl6Rraeoqc5xAj1biSW0fEWBhS1UAAAAAElFTkSuQmCC">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Party too hard and die</title>
+  
+<script>
+  var myVar = setInterval(myTimer, 365);
+  var myColor = "red";
+  var oldPick = 0;
+  
+  function myTimer(){
+   document.body.style.backgroundColor = myColor;
+    var colorPick = Math.floor(Math.random() * 6);
+    if (colorPick == oldPick)
+      colorPick = oldPick + 1;
+    
+    //colorPick = 0;
+    
+    oldPick = colorPick;
+    if (colorPick == 0)
+      myColor = "red";
+    if (colorPick == 1)
+      myColor = "yellow";
+    if (colorPick == 2)
+      myColor = "lime";
+    if (colorPick == 3)
+      myColor = "aqua";
+    if (colorPick == 4)
+      myColor = "blue";
+    if (colorPick == 5)
+      myColor = "fuchsia";
+  }
+  
+  function playMusic(){
+    document.getElementById("playButton").parentNode.removeChild(document.getElementById("playButton"));
+  }
+  
+  
+  // https://developers.google.com/youtube/iframe_api_reference
+  // global variable for the player
+  var player;
+  // this function gets called when API is ready to use
+  function onYouTubePlayerAPIReady() {
+    // create the global player from the specific iframe (#video)
+    player = new YT.Player('video', {
+      events: {
+        // call this function when player is ready to use
+        'onReady': onPlayerReady
+      }
+    });
+  }
+  
+
+  function onPlayerReady(event) {
+    // bind events
+    var playButton = document.getElementById("playButton");
+    playButton.addEventListener("click", function() {
+      player.playVideo();
+    });
+    var pauseButton = document.getElementById("pause-button");
+    pauseButton.addEventListener("click", function() {
+      player.pauseVideo();
+    });
+  }
+
+// Inject YouTube API script
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+</script>
+  
+  
+  
+  
+  
+<style>
+  button.theOne {
+    border-width: 0px;
+    background-color: "white";
+    font-family: monospace;
+    font-size: 600%;
+  }
+  
+  .container {
+  height: 300px;
+  position: relative;
+  border-width: 0px;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+  
+  
+</style>
+  
+</head>
+<body>
+  <div class="container">
+    <div class="vertical-center">
+      <button class="theOne" id="playButton" onclick="playMusic()">Play the Music!</button><span id="videoPlayer"></span>
+    </div>
+  </div>
+
+  <iframe id="video" width="0" height="0" src="https://www.youtube.com/embed/z8pI3jCQYCw?enablejsapi=1 " frameborder="0" ></iframe>
+
+</body>
+</html>
