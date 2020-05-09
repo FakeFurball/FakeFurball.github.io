@@ -35,51 +35,36 @@
   }
   
   function playLoops(){
-	document.getElementById("videoPlayer").innerHTML = "<audio autoplay loops><source src=\"Loops.mp3\"></audio>";
+	document.getElementById("videoPlayer").innerHTML = "<audio autoplay loops><source src=\"Loops.mp3\">Your browser does not support audio</audio>";
+	setTimeout(playLoop, 73140); 
   }  
+  function playLoop(){
+	document.getElementById("videoPlayer").innerHTML = "<audio autoplay loops><source src=\"Loops.mp3\">Your browser does not support audio</audio>";
+	setTimeout(playLoops, 73140); 
+  } 
+  
   
   function playMusic(){
     document.getElementById("playButton").parentNode.removeChild(document.getElementById("playButton"));
 	setInterval(myTimer, 365);
-	document.getElementById("videoPlayer").innerHTML = "<audio autoplay><source src=\"Intro.mp3\"></audio>";
-	setTimeout(playLoops, 12136500);
-	//setTimeout(playLoops, 5000);
-  }
-  
-  
-
+	document.getElementById("videoPlayer").innerHTML = "<audio autoplay><source src=\"Intro.mp3\">Your browser does not support audio</audio>";
+	setTimeout(playLoops, 121362);
+ }
+ 
 </script>
-  
-  
-  
-  
-  
+ 
 <style>
   button.theOne {
     border-width: 0px;
     background-color: "white";
     font-family: monospace;
-    font-size: 600%;
+    font-size: 7vw;
   }
-  
-  .container {
-  height: 300px;
-  position: relative;
-  border-width: 0px;
-}
 
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-  
+
 #wrapper {
   width: 100%;
-  height: 500px;
+  height: 100%;
   border-width: 0px;
   display: flex;
   align-items: center;
@@ -90,17 +75,14 @@
   
 </head>
 <body>
-  <div id="wrapper">
-    <button class="theOne" id="playButton" onclick="playMusic()">
-	  <pre>!Play the Music!
+<div id="wrapper">
+	<button class="theOne" id="playButton" onclick="playMusic()">
+	<pre>!!Seizure Warning!!
+	  
+!Play the Music!
 	  
 !!Seizure Warning!!</pre>
 	</button><span id="videoPlayer"></span>
-  </div>
-
-  
-  
-  <!-- <iframe id="video" width="0" height="0" src="Intro.mp3" frameborder="0" ></iframe> -->
-
+</div>
 </body>
 </html>
